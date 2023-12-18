@@ -1,6 +1,9 @@
 <?php
 session_start();
 if(isset($_SESSION['userRole']) && $_SESSION['userRole'] == "admin"){
+    include_once "../../model/script_connexion.php";
+    include_once "../../model/statistique.php";
+    $info_jobs = new display_statistique($conn);
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -66,7 +69,14 @@ if(isset($_SESSION['userRole']) && $_SESSION['userRole'] == "admin"){
                                     <div>
                                         <p class="mb-0">Offres</p>
                                         <div class="mt-4">
-                                            <h3><strong>18</strong></h3>
+                                            <h3><strong>
+                                                    <?php
+                                                $all_job = $info_jobs->statistique_jobs();
+                                                foreach($all_job as $rows){
+                                                    echo $rows['total_jobs'];
+                                                }
+                                                ?>
+                                                </strong></h3>
 
                                         </div>
                                     </div>
@@ -85,7 +95,14 @@ if(isset($_SESSION['userRole']) && $_SESSION['userRole'] == "admin"){
                                     <div>
                                         <p class="mb-0">Active Offres</p>
                                         <div class="mt-4">
-                                            <h3><strong>132</strong></h3>
+                                            <h3><strong>
+                                                    <?php
+                                                $job_actif = $info_jobs->job_actif();
+                                                foreach($job_actif as $rows){
+                                                    echo $rows['actif_job'];
+                                                }
+                                                ?>
+                                                </strong></h3>
 
                                         </div>
                                     </div>
@@ -104,8 +121,14 @@ if(isset($_SESSION['userRole']) && $_SESSION['userRole'] == "admin"){
                                     <div>
                                         <p class="mb-0">Nombre visiteurs</p>
                                         <div class="mt-4">
-                                            <h3><strong>12</strong></h3>
-                                            <!-- <p><strong></strong> Completed</p> -->
+                                            <h3><strong>
+                                                    <?php
+                                                $users = $info_jobs->number_user();
+                                                foreach($users as $rows){
+                                                    echo $rows['total_users'];
+                                                }
+                                                ?>
+                                                </strong></h3>
                                         </div>
                                     </div>
                                     <div class="">
@@ -121,10 +144,71 @@ if(isset($_SESSION['userRole']) && $_SESSION['userRole'] == "admin"){
                             <div class="card-body p-4">
                                 <div class="d-flex justify-content-between px-md-1">
                                     <div>
+                                        <p class="mb-0">offre inaprouve </p>
+                                        <div class="mt-4">
+                                            <h3><strong>
+                                                    <?php
+                                                $inaprouve = $info_jobs->offre_inaprouve();
+                                                foreach($inaprouve as $rows){
+                                                    echo $rows['total_inaprouve'];
+                                                }
+                                                ?>
+                                                </strong></h3>
+                                        </div>
+                                    </div>
+                                    <div class="">
+                                        <!-- <img src="img/project-icon-3.svg" alt="icon"> -->
+                                        <svg width="32" height="32" viewBox="0 0 32 32" fill="none"
+                                            xmlns="http://www.w3.org/2000/svg">
+                                            <rect width="32" height="32" rx="6" fill="#FF0000" fill-opacity="0.1" />
+                                            <g clip-path="url(#clip0_599_2431)">
+                                                <path
+                                                    d="M15.9999 22.6663C19.6818 22.6663 22.6666 19.6816 22.6666 15.9997C22.6666 12.3178 19.6818 9.33301 15.9999 9.33301C12.318 9.33301 9.33325 12.3178 9.33325 15.9997C9.33325 19.6816 12.318 22.6663 15.9999 22.6663Z"
+                                                    stroke="#FF0000" stroke-linecap="round" stroke-linejoin="round" />
+                                                <path
+                                                    d="M16 20C18.2091 20 20 18.2091 20 16C20 13.7909 18.2091 12 16 12C13.7909 12 12 13.7909 12 16C12 18.2091 13.7909 20 16 20Z"
+                                                    stroke="#FF0000" stroke-linecap="round" stroke-linejoin="round" />
+                                                <path
+                                                    d="M16.0001 17.3337C16.7365 17.3337 17.3334 16.7367 17.3334 16.0003C17.3334 15.2639 16.7365 14.667 16.0001 14.667C15.2637 14.667 14.6667 15.2639 14.6667 16.0003C14.6667 16.7367 15.2637 17.3337 16.0001 17.3337Z"
+                                                    stroke="#FF0000" stroke-linecap="round" stroke-linejoin="round" />
+                                            </g>
+                                            <defs>
+                                                <clipPath id="clip0_599_2431">
+                                                    <rect width="16" height="16" fill="white"
+                                                        transform="translate(8 8)" />
+                                                </clipPath>
+                                            </defs>
+                                            <!-- Close Icon -->
+                                            <path
+                                                d="M3.646 3.646a.5.5 0 01.708 0L8 7.293l3.646-3.647a.5.5 0 01.708.708L8.707 8l3.647 3.646a.5.5 0 01-.708.708L8 8.707l-3.646 3.647a.5.5 0 01-.708-.708L7.293 8 3.646 4.354a.5.5 0 010-.708z"
+                                                fill="#FF0000" />
+                                        </svg>
+
+
+
+
+                                    </div>
+                                </div>
+
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-xl-3 col-sm-6 col-12 mb-4">
+                        <div class="card">
+                            <div class="card-body p-4">
+                                <div class="d-flex justify-content-between px-md-1">
+                                    <div>
                                         <p class="mb-0">Offres approuver</p>
                                         <div class="mt-4">
-                                            <h3><strong>76%</strong></h3>
-                                            <p><strong>57%</strong> Completed</p>
+                                            <h3><strong>
+                                                    <?php
+                                                $aprouve = $info_jobs->offre_aprouve();
+                                                foreach($aprouve as $rows){
+                                                    echo $rows['total_aprouve'];
+                                                }
+                                                ?>
+                                                </strong></h3>
+                                            <p> Completed</p>
                                         </div>
                                     </div>
                                     <div class="">

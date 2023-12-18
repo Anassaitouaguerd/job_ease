@@ -133,8 +133,6 @@ function succec(e) {
     req.send();
     req.onreadystatechange = function() {
         if (this.readyState === 4 && this.status === 200) {
-
-
             const res = req.responseText;
             if (res === "false") {
                 console.log("ay7aja");

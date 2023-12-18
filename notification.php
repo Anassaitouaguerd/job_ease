@@ -53,10 +53,8 @@ $not = new aprouve_offer($conn);
             foreach($noti as $rows){
                     if($rows['status'] == "aprouve"){
             ?>
-                <h1>
-                    <?php
-           echo $rows['title'];
-            ?>
+                <h1 class="display-4">
+                    <?php echo $rows['title']; ?>
                 </h1>
                 <span class="custom-span ">
                     Your offer is accepted and now is approved
@@ -64,12 +62,18 @@ $not = new aprouve_offer($conn);
                 <?php
                     }else if($rows['status'] == "inaprouve"){
             ?>
+                <h1 class="display-4">
+                    <?php echo $rows['title']; ?>
+                </h1>
                 <span class="custom-span-red">
                     Your offer is not rejected and we disapprove your offer
                 </span>
                 <?php
                     }else if($rows['status'] == "save"){
                         ?>
+                <h1 class="display-4">
+                    <?php echo $rows['title']; ?>
+                </h1>
                 <span class="custom-span-yellow">
                     Your offer is in review mode
                 </span>

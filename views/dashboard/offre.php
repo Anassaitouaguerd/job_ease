@@ -101,10 +101,10 @@ $aprouve = new aprouve_offer($conn);
                                 <p class="fw-normal mb-1 f_title"><?= $rows["status"] ?>. </p>
                             </td>
                             <td class="d-flex">
-                                <a href="../../controller/aprouve_controller.php?id_offre=<?= $rows["id"]?>&accept"
+                                <a href="../../controller/aprouve_controller.php?id_offre=<?= $rows["id"]?>&accept&id_job=<?= $rows["job_id"]?>"
                                     class="w-50"><img class="accept_task" style="width: 85%;"
                                         src="img/journal-check.svg" alt="icon"></a>
-                                <a href="../../controller/aprouve_controller.php?id_offre=<?= $rows["id"]?>&reject"
+                                <a href="../../controller/aprouve_controller.php?id_offre=<?= $rows["id"]?>&reject&id_job=<?= $rows["job_id"]?>"
                                     class="w-50">
                                     <img class="delet_user" style="width: 85%;" src="img/journal-x.svg" alt="icon">
                                 </a>

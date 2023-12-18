@@ -35,7 +35,7 @@ require_once "../model/auth.php";
             if($don){
                 $isexist = $reg->login($email , $password);
                 $_SESSION['userRole'] = $isexist[0]['role_name'];
-                $_SESSION['userid'] = $isexist[0]['id'];
+                $_SESSION['userid'] = $isexist[0]['id_user'];
                 $_SESSION['userName'] = $isexist[0]['username'];
                 $_SESSION['userEmail'] = $isexist[0]['email'];
                 header('location: ../index.php');

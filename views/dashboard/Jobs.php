@@ -106,11 +106,11 @@ $job = new jobe($conn);
                                     <div class="form-group">
                                         <label for="jobLocation">status:</label>
                                         <select name="jobstatus" class="form-control select" id="jobstatus">
-                                            <option value="open">
-                                                open
+                                            <option value="actif">
+                                                actif
                                             </option>
-                                            <option value="close">
-                                                close
+                                            <option value="inactif">
+                                                inactif
                                             </option>
                                         </select>
                                     </div>
